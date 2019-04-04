@@ -47,6 +47,10 @@ const passwordDoGenerate = async (src, options) => {
 }
 
 const passwordGenerate = async options => {
+  if (!options.raw || !options.maxLength || options.maxLength < 4) {
+    return ""
+  }
+
   let src = options.raw
   let depth = 0
 
