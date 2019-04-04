@@ -86,7 +86,7 @@ const main = () => {
     const raw = rawPasswordInput.value
     const maxLength = maxLengthInput.valueAsNumber
     const useSign = useSignCheckBox.checked
-    const signList = signListInput.value
+    const signList = useSign ? signListInput.value : ""
     return { raw, maxLength, useSign, signList, digest, btoa }
   }
 
