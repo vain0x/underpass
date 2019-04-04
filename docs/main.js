@@ -56,7 +56,7 @@ const passwordGenerate = async options => {
 
   while (true) {
     const password = await passwordDoGenerate(src, options)
-    if (passwordIsOk(password, options)) {
+    if (depth >= 4 && passwordIsOk(password, options)) {
       return password
     }
 
