@@ -51,7 +51,7 @@ const passwordGenerate = async options => {
     return ""
   }
 
-  let src = options.raw
+  let src = `${options.raw}${options.maxLength}`
   let depth = 0
 
   while (true) {
