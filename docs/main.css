@@ -1,0 +1,66 @@
+html {
+    font-size: 62.5%;
+}
+
+body,
+h1,
+h2,
+h3 {
+    font-size: 1.6rem;
+}
+
+body {
+    background: linear-gradient(#60da85, #4b83fc);
+    color: #212121;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100vh;
+}
+
+html,
+body,
+main {
+    display: flex;
+    flex-flow: column;
+}
+
+body {
+    align-items: center;
+}
+
+main {
+    flex: 1;
+}
+
+main > form,
+main > section {
+    margin: 16px;
+}
+
+form {
+    display: grid;
+    grid-template-columns: auto 160px auto;
+    grid-gap: 8px;
+}
+
+#gen-password-container {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+#gen-password-input {
+    flex: 1;
+}
+
+footer a {
+    color: #212121;
+}
