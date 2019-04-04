@@ -1,11 +1,5 @@
-const arrayBufferFromString = str => {
-  const buffer = new ArrayBuffer(str.length * 2)
-  const data = new Uint16Array(buffer)
-  for (let i = 0; i < str.length; i++) {
-    data[i] = str.charCodeAt(i)
-  }
-  return buffer
-}
+const arrayBufferFromString = str =>
+  new TextEncoder().encode(str)
 
 const arrayBufferToBase64 = (buffer, btoa) => {
   let str = ""
