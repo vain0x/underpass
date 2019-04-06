@@ -95,6 +95,10 @@ const main = () => {
     jdenticon.update(rawPasswordIdenticonSvg)
   }
 
+  const resetRawPassword = () => {
+    rawPasswordInput.value = ""
+  }
+
   const copyGenPassword = () => {
     genPasswordInput.select()
     document.execCommand("copy")
@@ -121,6 +125,7 @@ const main = () => {
 
   genPasswordCopyButton.addEventListener("click", () => {
     copyGenPassword()
+    resetRawPassword()
   })
 
   update()
