@@ -1,0 +1,26 @@
+{
+    "defaultSeverity": "warn",
+    "jsRules": {},
+    "rules": {
+        "semicolon": [
+            true,
+            "never"
+        ],
+        "quotemark": [
+            true,
+            "double"
+        ],
+        "trailing-comma": [
+            true,
+            {
+                "multiline": "always",
+                "singleline": "never"
+            }
+        ],
+        "ordered-imports": [
+            true,
+            "always"
+        ]
+    },
+    "rulesDirectory": []
+}
