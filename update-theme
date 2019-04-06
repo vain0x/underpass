@@ -1,0 +1,6 @@
+#!/bin/bash
+
+git subtree pull -P lib/website https://github.com/vain0x/website master --squash
+cp lib/website/dist/theme.css docs/theme.css
+git add docs/theme.css
+git commit -m 'chore: Update theme.css'
