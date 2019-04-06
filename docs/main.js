@@ -95,6 +95,11 @@ const main = () => {
     jdenticon.update(rawPasswordIdenticonSvg)
   }
 
+  const copyGenPassword = () => {
+    genPasswordInput.select()
+    document.execCommand("copy")
+  }
+
   const update = async () => {
     const options = currentOptions()
     window.requestAnimationFrame(() => {
@@ -115,8 +120,7 @@ const main = () => {
   useSignCheckBox.addEventListener("change", update)
 
   genPasswordCopyButton.addEventListener("click", () => {
-    genPasswordInput.select()
-    document.execCommand("copy")
+    copyGenPassword()
   })
 
   update()
