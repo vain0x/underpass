@@ -143,6 +143,15 @@ body {
   color: var(--primary-color-text);
 }
 
+#app .app-header-link,
+#app .app-header-link:active,
+#app .app-header-link:focus,
+#app .app-header-link:hover,
+#app .app-header-link:visited {
+  text-decoration: none;
+  transition: color 0.1s linear;
+}
+
 #app .app-header-link:hover,
 #app .app-header-link:focus {
   color: var(--primary-color-light);
