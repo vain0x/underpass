@@ -6,21 +6,6 @@
     }
 }
 
-.app-header-link,
-.app-header-link:active,
-.app-header-link:focus,
-.app-header-link:hover,
-.app-header-link:visited {
-  text-decoration: none;
-  color: var(--base-color-text);
-  transition: color 0.1s linear;
-}
-
-.app-header-link:hover,
-.app-header-link:focus {
-  color: var(--primary-color-light);
-}
-
 h1 {
     font-size: 1.6rem;
 }
