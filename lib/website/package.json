@@ -1,0 +1,52 @@
+{
+  "name": "vain0x.github.io",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My Website",
+  "main": "index.js",
+  "scripts": {
+    "clean": "git clean -f ./dist/**",
+    "dev": "run-p dev:*",
+    "dev:build": "chokidar \"src/**/*\" -c \"ts-node ./scripts/build\"",
+    "dev:serve": "ts-node ./scripts/serve",
+    "prod": "run-s prod:build",
+    "prod:build": "ts-node ./scripts/build",
+    "deploy": "run-s deploy:*",
+    "deploy:check": "npm run git-ensure-clean",
+    "deploy:checkout-release": "git checkout release",
+    "deploy:merge": "git merge master --no-edit",
+    "deploy:build": "npm run prod:build",
+    "deploy:commit": "git add ./dist && git commit -m Build",
+    "deploy:push": "git subtree push --prefix dist gh-pages master",
+    "deploy:checkout-master": "git checkout master",
+    "deploy:clean": "npm run clean",
+    "git-ensure-clean": "git diff-index --quiet HEAD --",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vain0x/website.git"
+  },
+  "author": "vain0x",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vain0x/website/issues"
+  },
+  "homepage": "https://vain0x.github.io/",
+  "devDependencies": {
+    "@types/chokidar": "^1.7.5",
+    "@types/node": "^10.12.18",
+    "chokidar": "^2.0.4",
+    "chokidar-cli": "^1.2.1",
+    "hyperapp": "^1.2.9",
+    "hyperapp-render": "^3.0.0",
+    "npm-run-all": "^4.1.5",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.12.1",
+    "typescript": "^3.2.4"
+  },
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "express": "^4.16.4"
+  }
+}

@@ -6,50 +6,57 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Underpass</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="theme.css">
   <link rel="stylesheet" href="main.css">
 </head>
 
-<body>
-  <main>
-    <section>
-      <h1>Underpass</h1>
-    </section>
-
-    <form>
-      <label for="raw-password-input">
-        <div>Input</div>
-      </label>
-      <input id="raw-password-input" type="password" autocomplete="new-password">
-      <div>
-        <svg
-          id="raw-password-identicon-svg"
-          data-jdenticon-value=""
-          width="24" height="24"></svg>
+<body id="app">
+  <header class="app-header-container">
+    <div class="app-header-contents">
+      <div class="app-header-header">
+        <h1 class="app-header-link">Underpass</h1>
       </div>
+    </div>
+  </header>
 
-      <label for="raw-password-input">
-        <div>Generated</div>
-      </label>
-      <input id="gen-password-input" type="text" readonly>
-      <button id="gen-password-button" type="button">Copy</button>
+  <main class="app-main-container">
+    <article class="app-main-contents">
+      <form id="form">
+        <label for="raw-password-input">
+          <div>Input</div>
+        </label>
+        <input id="raw-password-input" type="password" autocomplete="new-password">
+        <div>
+          <svg
+            id="raw-password-identicon-svg"
+            data-jdenticon-value=""
+            width="24" height="24"></svg>
+        </div>
 
-      <label for="max-length-input">Length</label>
-      <input id="max-length-input" type="number" max=88 value=20>
-      <div></div>
+        <label for="raw-password-input">
+          <div>Generated</div>
+        </label>
+        <input id="gen-password-input" type="text" readonly>
+        <button id="gen-password-button" type="button">Copy</button>
 
-      <label for="use-sign-checkbox">
-        Sign
-        <input id="use-sign-checkbox" type="checkbox">
-      </label>
-      <input id="sign-list-input" type="text" value="!#$">
-      <div></div>
-    </form>
+        <label for="max-length-input">Length</label>
+        <input id="max-length-input" type="number" max=88 value=20>
+        <div></div>
+
+        <label for="use-sign-checkbox">
+          Sign
+          <input id="use-sign-checkbox" type="checkbox">
+        </label>
+        <input id="sign-list-input" type="text" value="!#$">
+        <div></div>
+      </form>
+    </article>
+
+    <footer>
+      No warranty.
+      See <a href="https://github.com/vain0x/underpass">Source Code on GitHub</a>.
+    </footer>
   </main>
-
-  <footer>
-    No warranty.
-    See <a href="https://github.com/vain0x/underpass">Source Code on GitHub</a>.
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/jdenticon@2.1.1"></script>
   <script src="main.js"></script>
