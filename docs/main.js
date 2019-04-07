@@ -1,14 +1,8 @@
 const arrayBufferFromString = str =>
   new TextEncoder().encode(str)
 
-const arrayBufferToBase64 = (buffer, btoa) => {
-  let str = ""
-  const bytes = new Uint8Array(buffer)
-  for (let i = 0; i < bytes.byteLength; i++) {
-    str += String.fromCharCode(bytes[i])
-  }
-  return btoa(str)
-}
+const arrayBufferToBase64 = buffer =>
+  base64js.fromByteArray(new Uint8Array(buffer))
 
 const passwordIsOk = (password, options) => {
   const { maxLength, useSign, signList } = options
@@ -30,7 +24,7 @@ const passwordDoGenerate = async (src, options) => {
 
   const data = arrayBufferFromString(src)
   const hashData = await options.digest(data)
-  const hashBase64 = arrayBufferToBase64(hashData, options.btoa)
+  const hashBase64 = arrayBufferToBase64(hashData)
   const hashReplaced = hashBase64
     .split("+").join(sign1)
     .split("/").join(sign2)
@@ -74,14 +68,13 @@ const main = () => {
   const signListInput = document.getElementById("sign-list-input")
 
   const digest = data => window.crypto.subtle.digest("SHA-512", data)
-  const btoa = window.btoa
 
   const currentOptions = () => {
     const raw = rawPasswordInput.value
     const maxLength = maxLengthInput.valueAsNumber
     const useSign = useSignCheckBox.checked
     const signList = useSign ? signListInput.value : ""
-    return { raw, maxLength, useSign, signList, digest, btoa }
+    return { raw, maxLength, useSign, signList, digest }
   }
 
   const setIdenticonSource = source => {
