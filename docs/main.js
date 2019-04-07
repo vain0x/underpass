@@ -1,3 +1,8 @@
+const MIN_STRETCH_COUNT = 4
+const MAX_STRETCH_COUNT = 100
+const MIN_RAW_LENGTH = 4
+const SIGN_LIST = "abc"
+
 const arrayBufferFromString = str =>
   new TextEncoder().encode(str)
 
@@ -18,9 +23,9 @@ const passwordIsOk = (password, options) => {
 const passwordDoGenerate = async (src, options) => {
   const { maxLength, signList } = options
 
-  const sign1 = signList && signList.length >= 1 && signList[0] || "a"
-  const sign2 = signList && signList.length >= 2 && signList[1] || "b"
-  const sign3 = signList && signList.length >= 3 && signList[2] || "c"
+  const sign1 = signList && signList.length >= 1 && signList[0] || SIGN_LIST[0]
+  const sign2 = signList && signList.length >= 2 && signList[1] || SIGN_LIST[1]
+  const sign3 = signList && signList.length >= 3 && signList[2] || SIGN_LIST[2]
 
   const data = arrayBufferFromString(src)
   const hashData = await options.digest(data)
@@ -35,7 +40,7 @@ const passwordDoGenerate = async (src, options) => {
 }
 
 const passwordGenerate = async options => {
-  if (!options.raw || !options.maxLength || options.maxLength < 4) {
+  if (!options.raw || !options.maxLength || options.maxLength < MIN_RAW_LENGTH) {
     return ""
   }
 
@@ -44,14 +49,14 @@ const passwordGenerate = async options => {
 
   while (true) {
     const password = await passwordDoGenerate(src, options)
-    if (depth >= 4 && passwordIsOk(password, options)) {
+    if (depth >= MIN_STRETCH_COUNT && passwordIsOk(password, options)) {
       return password
     }
 
     src = password
 
     depth++
-    if (depth >= 100) {
+    if (depth >= MAX_STRETCH_COUNT) {
       console.warn("Couldn't generate")
       return ""
     }
